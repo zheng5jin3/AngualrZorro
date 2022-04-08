@@ -1,0 +1,18 @@
+<p [class.active]="person.active" [highlightAble]='true' [highlightClass]="'highlight'">
+  组织架构{{person.name}}
+</p>
+
+<!-- 管道 -->
+<h1>我是管道{{person?.name | uppercase | uppercase}}</h1>
+
+<!--文本HTML  -->
+<div #dia (click)="getDom($event)" [innerHTML]="'<div>我是html</div>'"></div>
+
+<!-- 跨组件传值 -->
+<app-org-mng-sub #permission [person]="person " [onYell]='yell' (onYell2)='yell($event)'></app-org-mng-sub>
+<br>
+<button (click)="permission.run()">主组件调用子组件的方法</button>
+<button (click)="getChildData()">主组件调用子组件的属性</button>
+
+<!-- 消息订阅和发布 -->
+<button (click)="send()">消息订阅和发布</button>

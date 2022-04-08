@@ -1,0 +1,84 @@
+<nz-layout style="height: 100%;">
+
+  <!-- 顶部导航栏 -->
+  <nz-header class="topbar">
+    <span class="brand">Titans SCM</span>
+    <i class="anticon trigger menu-button" [class.anticon-menu-fold]="!isCollapsed"
+      [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed = !isCollapsed"></i>
+    <div class="topbar-menu">
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" [nzSelectable]="'false'">
+        <li nz-menu-item (click)='navigateMenu({name:"首页",route:"system/welcome"})'>
+          <i class="anticon anticon-home"></i>首页</li>
+        <li nz-menu-item>
+          <i class="anticon anticon-book"></i>使用手册</li>
+        <li nz-menu-item>
+          <i class="anticon anticon-lock"></i>修改密码</li>
+        <li nz-menu-item>
+          <i class="anticon anticon-poweroff"></i>退出</li>
+      </ul>
+    </div>
+  </nz-header>
+
+
+  <nz-layout>
+    <!-- 左侧菜单栏 -->
+    <nz-sider class="leftbar" nzCollapsible nzWidth="250" [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
+      <div class="logo">
+        <!-- 要么nzShape="circle" 要么 [nzShape]="'circle'"  -->
+        <nz-avatar [nzSize]="'large'" nzShape="circle" nzIcon="anticon anticon-user"
+          nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+        <div [ngStyle]="{'display':isCollapsed ? 'none' : 'block' }">
+          <div class="loginfo">珠海市横琴新区志远精密科技有限公司</div>
+          <div class="loginStaus">
+            <i class="fa fa-circle text-success"></i> 在线</div>
+        </div>
+      </div>
+      <div *ngIf="!isCollapsed" class="brand">主菜单</div>
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+        <li nz-submenu *ngFor="let menu of menus" [(nzOpen)]="menu.isOpen" (nzOpenChange)="openHandler(menu.id)">
+          <span title>
+            <i class="anticon {{menu.icon}}"></i>
+            <span class="nav-text">{{menu.name}}</span>
+          </span>
+          <ul>
+            <li nz-menu-item *ngFor="let child of menu.children" (click)='navigateMenu(child)'>
+              <span title>
+                <i class="anticon anticon-profile"></i>
+                <span class="nav-text">{{child.name}}</span>
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+
+    <nz-layout class="layout-content" *ngIf="this.showMenus.length">
+      <div style="background-color:white;border-bottom:1px solid black;">
+        <nz-tabset [nzType]="'line'" [nzSelectedIndex]="tabIndex" [nzTabBarGutter]="0">
+          <nz-tab *ngFor="let menu of showMenus;let i=index;" [nzTitle]="titleTemplate" (nzSelect)="tabChange(i)">
+            <ng-template #titleTemplate>
+              <div>
+                {{ menu.name }}&nbsp;&nbsp;
+                <i nz-icon type="close" (click)="closeTab(i)" class="ant-tabs-close-x"></i>
+              </div>
+            </ng-template>
+          </nz-tab>
+        </nz-tabset>
+      </div>
+
+      <div class="layout-main-content">
+        <!-- 正文内容栏 -->
+        <nz-content style="padding: 10px;">
+          <router-outlet></router-outlet>
+        </nz-content>
+        <!-- 底部说明栏 -->
+        <nz-footer class="layout-footer">Copyright ©2018 Titans New Power Electronics Co.,Ltd. All rights reserved.
+        </nz-footer>
+      </div>
+
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
+<ng-template #trigger>
+  <i class="anticon anticon-up"></i>
+</ng-template>

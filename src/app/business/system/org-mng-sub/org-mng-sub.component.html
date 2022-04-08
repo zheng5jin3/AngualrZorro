@@ -1,0 +1,6 @@
+
+
+<!-- 模板绑定 -->
+<p>我是子组件!{{person.name}}</p>
+<button (click)="clickMe()" *ngIf="true">子组件调用主组件的方法</button>
+<button (click)="onYell('我是主组件的方法')" *ngIf="true">子组件调用主组件的方法</button>

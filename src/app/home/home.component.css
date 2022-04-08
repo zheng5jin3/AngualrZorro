@@ -1,0 +1,106 @@
+:host ::ng-deep .trigger {
+	font-size: 18px;
+	line-height: 64px;
+	padding: 0 24px;
+	cursor: pointer;
+	transition: color .3s;
+}
+:host ::ng-deep .trigger:hover {
+	color: #1890ff;
+}
+:host ::ng-deep .logo {
+	height: 60px;
+	/* background: #001F2E;*/
+	margin: 0 auto;
+	padding: 10px 10px 10px 20px;
+	display: flex;
+}
+
+/* 左侧菜单栏*/
+.leftbar{
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 100%;/*设置滚动条*/
+}
+.leftbar::-webkit-scrollbar{
+	display:none;/*不显示滚动条*/
+}
+.leftbar .loginfo {
+	width: 180px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: white;
+	font-weight: bolder;
+}
+.leftbar .loginStaus {
+	color: #F0F3F6;
+	font-size: smaller
+}
+.leftbar .brand {
+	color: rgba(255,255,255,.65);
+	background-color: #002842;
+	padding: 5px 0 5px 20px;
+}
+
+
+/* 顶部导航栏*/
+.topbar {
+	background: #002842;
+	padding:0;
+}
+.topbar .brand {
+	font-size: 25px;
+	color: white;
+	padding-left:40px;
+	-webkit-user-select: none;
+	user-select: none;
+}
+.topbar .menu-button {
+	color: white;
+	padding-left:65px;
+}
+/* .topbar .menu-button:hover {
+	color: orange;
+}*/
+
+
+/* 顶部导航栏 - 菜单栏*/
+.topbar .topbar-menu {
+	float: right;
+}
+.topbar .topbar-menu ul {
+	line-height: 64px;
+	background-color: #002842
+}
+.topbar .topbar-menu ul li {
+	color: white;
+}
+.topbar .topbar-menu ul li:hover {
+	color: orange;
+}
+
+/* 正文内容栏 */
+.layout-content {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	height: 100%;/*设置滚动条*/
+}
+
+/* 正文内容栏 */
+.layout-main-content{
+	margin-top: 10px;
+	margin-left: 10px;
+	width:99%;
+	background-color: white;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+
+/* 底部说明栏 */
+.layout-footer {
+	text-align: center;
+}
+
+

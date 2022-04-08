@@ -1,0 +1,28 @@
+<p>用户管理</p>
+
+<h4>以下跳转的路由是子路由</h4>
+<!-- 动态路由 -->
+<a [routerLink]="['./userDetail',1]" routerLinkActive="active">在路由路径中传递参数（1）</a>
+<br>
+<a (click)="go()">在路由路径中传递参数（2）</a>
+<br>
+<!-- get传值 -->
+<a routerLink="./userDetl" [queryParams]="{id: 3}" routerLinkActive="active">在查询参数中传递参数（3）</a>
+<!-- <a [routerLink]="['./userDetl']" [queryParams]="{id: 3}" routerLinkActive="active">在查询参数中传递参数（3）</a> -->
+<br>
+<a (click)="go2()">在查询参数中传递参数（4）</a>
+<br><br>
+
+<h4>以下跳转的路由是并级别</h4>
+<a [routerLink]="['../userDetal',5]" routerLinkActive="active">在路由路径中传递参数（5）</a>
+<br>
+<a (click)="go3()">在路由路径中传递参数（6）</a>
+<br><br>
+
+
+<router-outlet></router-outlet>
+
+
+
+<!-- ./ 父子路由使用  ../同级别路由使用 -->
+<!-- <a routerLink="/welcome" routerLinkActive="active">点击我跳转</a> -->
